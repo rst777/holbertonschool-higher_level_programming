@@ -12,18 +12,20 @@ def roman_to_int(roman_string):
     prev_value = 0
 
     # Parcours de la chaîne de droite à gauche
-    for char in reversed(roman_string):
+    for char in roman_string:
+        if char not in roman_values:
+            return 0
         # Récupère la valeur du caractère romain actuel
-        value = roman_values.get(char, 0)
+        current_value = roman_values[char]
 
         # Si la valeur actuelle est inférieure à la valeur précédente,
         # on la soustrait
-        if value < prev_value:
-            total -= value
+        if prev_value < current_value:
+            total += current_value - 2 * prev_value
         else:
             # Sinon, on l'ajoute au total
-            total += value
+            total += current_value
 
         # Met à jour la valeur précédente
-        prev_value = value
+        prev_value = current_value
     return total
