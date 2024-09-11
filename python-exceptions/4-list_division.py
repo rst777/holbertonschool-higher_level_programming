@@ -21,10 +21,10 @@ def list_division(my_list_1, my_list_2, list_length):
                     print("wrong type")
                     result = 0
 
-                result_list.append(result)  # Ajoute le résultat à la liste
-
         except Exception as e:
-            print(f"An error occurred: {e}")
-            result_list.append(0)
+            result = 0
+
+        finally:
+            result_list.append(result)
 
     return result_list
