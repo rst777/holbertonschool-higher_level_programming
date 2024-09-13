@@ -1,0 +1,61 @@
+def matrix_divided(matrix, div):
+    """
+    Divise tous les éléments d'une matrice par un nombre donné.
+
+    Args:
+    matrix (liste de listes): La matrice à diviser.
+    div (int ou float): Le nombre par lequel diviser.
+
+    Returns:
+    liste de listes: Une nouvelle matrice avec tous les éléments divisés par div, arrondis à 2 décimales.
+
+    Raises:
+    TypeError: Si matrix n'est pas une liste de listes d'entiers/flottants,
+               si chaque ligne de la matrice n'a pas la même taille,
+               ou si div n'est pas un nombre.
+    ZeroDivisionError: Si div est égal à 0.
+
+    >>> matrix = [
+    ...     [1, 2, 3],
+    ...     [4, 5, 6]
+    ... ]
+    >>> print(matrix_divided(matrix, 3))
+    [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+    >>> matrix = [
+    ...     [1.1, -2.2, 3.3],
+    ...     [4.4, 5.5, -6.6]
+    ... ]
+    >>> print(matrix_divided(matrix, 3))
+    [[0.37, -0.73, 1.1], [1.47, 1.83, -2.2]]
+
+    >>> print(matrix_divided(matrix, -3))
+    [[-0.37, 0.73, -1.1], [-1.47, -1.83, 2.2]]
+
+    >>> matrix_divided([[1, 2], [3, 4]], 0)
+    Traceback (most recent call last):
+    ...
+    ZeroDivisionError: division by zero
+
+    >>> matrix_divided([[1, 2], [3, '4']], 2)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+    >>> matrix_divided([[1, 2], [3, 4, 5]], 2)
+    Traceback (most recent call last):
+    ...
+    TypeError: Each row of the matrix must have the same size
+
+    >>> matrix_divided([[1, 2], [3, 4]], '2')
+    Traceback (most recent call last):
+    ...
+    TypeError: div must be a number
+
+    >>> matrix_divided(None, 2)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+    """
+    # Le code de la fonction reste le même que dans la réponse précédente
+    # ...
