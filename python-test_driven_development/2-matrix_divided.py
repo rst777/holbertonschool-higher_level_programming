@@ -1,46 +1,12 @@
 #!/usr/bin/python3
 def matrix_divided(matrix, div):
     """
-    Divide all elements of a matrix by a given number.
+This module contains a function for dividing all elements of a matrix.
 
-    This function takes a matrix (a list of lists) and divides all its elements
-    by a given number. The result is a new matrix with the same structure as
-    the input, where each element is the result of the division rounded to 2
-    decimal places.
-
-    Args:
-        matrix (list of lists): The matrix to be divided. Must be a list of lists
-                                containing only integers or floats.
-        div (int or float): The number to divide by. Must be a non-zero number.
-
-    Returns:
-        list of lists: A new matrix with all elements divided by div,
-                       rounded to 2 decimal places.
-
-    Raises:
-        TypeError: If matrix is not a list of lists of integers/floats,
-                   if each row of the matrix is not the same size,
-                   or if div is not a number.
-        ZeroDivisionError: If div is equal to 0.
-
-    Examples:
-        >>> matrix = [
-        ...     [1, 2, 3],
-        ...     [4, 5, 6]
-        ... ]
-        >>> print(matrix_divided(matrix, 3))
-        [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
-
-        >>> matrix_divided([[1, 2], [3, '4']], 2)
-        Traceback (most recent call last):
-            ...
-        TypeError: matrix must be a matrix (list of lists) of integers/floats
-
-        >>> matrix_divided([[1, 2], [3, 4]], 0)
-        Traceback (most recent call last):
-            ...
-        ZeroDivisionError: division by zero
-    """
+The main function in this module is matrix_divided, which takes a matrix
+(as a list of lists) and a divisor, and returns a new matrix with all
+elements divided by the divisor.
+"""
     # Vérification du type de `matrix`
     if (not isinstance(matrix, list) or
         not all(isinstance(row, list) for row in matrix)):
