@@ -3,6 +3,7 @@
 Module that defines a Rectangle class.
 """
 
+
 class Rectangle:
     """
     A class to represent a rectangle.
@@ -90,7 +91,7 @@ class Rectangle:
         """
         if self.__height == 0 or self.__width == 0:
             return ("")
-        
+
         if isinstance(self.print_symbol, list):
             symbol = ", ".join(map(str, self.print_symbol))
         else:
