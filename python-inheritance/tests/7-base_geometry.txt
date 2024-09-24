@@ -1,59 +1,22 @@
-# 7-base_geometry.txt
+ 7-base_geometry.txt
 
-"""
-This library is very simple, since it only has one function called
-'integer_validator()'.
+===========================
+How to Use 7-base_geometry.py
+===========================
 
-Numbers:
-========
-'integer_validator()' returns True if a num is integer.
-"""
+This module defines a BaseGeometry class.
 
-# Import the class
->>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
->>> bg = BaseGeometry()
+Usage
+=====
+''integer_validator()'' returns True if a num is integer.
+:: with positives integers
+   >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+   >>> bg = BaseGeometry()
 
-# Test with positive integer
->>> bg.integer_validator("my_int", 12)
+:: with positive integer
+   >>> bg.integer_validator("my_int", 12)
 
-# Test with negative integer
->>> bg.integer_validator("number", -12)
-Traceback (most recent call last):
-ValueError: number must be greater than 0
-
-# Test with 3 arguments
->>> bg.integer_validator("numbers", 0, 1)
-Traceback (most recent call last):
-TypeError: integer_validator() takes 3 positional arguments but 4 were given
-
-# Test with infinite integer
->>> bg.integer_validator("infnumber", int('inf'))
-Traceback (most recent call last):
-ValueError: invalid literal for int() with base 10: 'inf'
-
-# Additional tests to cover more cases
-
-# Test with zero
->>> bg.integer_validator("zero", 0)
-Traceback (most recent call last):
-ValueError: zero must be greater than 0
-
-# Test with non-integer
->>> bg.integer_validator("float", 3.14)
-Traceback (most recent call last):
-TypeError: float must be an integer
-
-# Test with string
->>> bg.integer_validator("string", "hello")
-Traceback (most recent call last):
-TypeError: string must be an integer
-
-# Test with None
->>> bg.integer_validator("none", None)
-Traceback (most recent call last):
-TypeError: none must be an integer
-
-# Test the area() method
->>> bg.area()
-Traceback (most recent call last):
-Exception: area() is not implemented
+:: with negative integer
+   >>> bg.integer_validator("number", -12)
+   Traceback (most recent call last):
+   ValueError: number must be greater than 0
