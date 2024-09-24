@@ -14,5 +14,11 @@ class MyList(list):
         Imprime la liste triée en ordre ascendant.
 
         Cette méthode ne modifie pas la liste originale.
+
+        Lève une TypeError si la liste contient
+        des éléments non comparables.
         """
-        print(sorted(self))
+        try:
+            print(sorted(self))
+        except TypeError:
+            raise TypeError("unorderable types: NoneType() < int()")
