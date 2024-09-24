@@ -1,0 +1,12 @@
+# MyList class documentation
+
+## Introduction
+The class `MyList` is a subclass of the integrated class
+`List` in Python. She adds an additional method to
+Show the elements of the list in the growing order.
+
+## Prototype de la classe
+```python
+class MyList(list):
+    def print_sorted(self):
+        print(sorted(self))
