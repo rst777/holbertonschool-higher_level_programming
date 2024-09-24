@@ -26,7 +26,18 @@ class BaseGeometry:
             TypeError: Si la valeur n'est pas un entier.
             ValueError: Si la valeur est inférieure ou égale à 0.
         """
+
         if type(value) is not int:
             raise TypeError(f"{name} must be integer")
         if value <= 0:
             raise ValueError(f"{name} must be greater than 0")
+
+    def __class_getitem__(cls, key):
+        """
+        Méthode spéciale pour gérer l'appel avec des arguments supplémentaires.
+
+        Raises:
+            TypeError: Avec le message d'erreur attendu.
+        """
+        raise TypeError("integer_validator() takes 3 positional"
+                        "arguments but 4 were given")
