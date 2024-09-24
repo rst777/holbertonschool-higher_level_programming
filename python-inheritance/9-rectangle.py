@@ -50,7 +50,7 @@ class Rectangle(BaseGeometry):
         """
         return self.__str__()
 
-        if __name__ == "__main__":
-            r = Rectangle(3, 5)
-            print(r)
-            print(r.area())
+    if __name__ == "__main__":
+        r = Rectangle(3, 5)
+        print(r)
+        print(r.area())
