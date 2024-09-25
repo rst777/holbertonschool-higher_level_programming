@@ -27,7 +27,7 @@ class BaseGeometry:
             TypeError: Si la valeur n'est pas un entier.
             ValueError: Si la valeur est inférieure ou égale à 0.
         """
-        if not isinstance(value, int):
+        if type(value) is not int:
             raise TypeError("{} must be integer".format(name))
         if value <= 0:
             raise ValueError("{} must be greater than 0".format(name))
