@@ -1,11 +1,12 @@
 #!/usr/bin/python3
-"""Module définissant la classe BaseGeometry."""
+"""Module définissant la classe BaseGeometry.
+"""
 
 
 class BaseGeometry:
     """Classe de base pour les formes géométriques."""
     def area(self):
-        raise Exception("area() n'est pas implémentée")
+
         """
         Calcule l'aire de la forme géométrique.
 
