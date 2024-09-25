@@ -54,10 +54,10 @@ def shape_info(shape):
 if __name__ == "__main__":
     # Test avec un cercle
     circle = Circle(5)
-    print("information du cercle :")
+    print("Circle Info :")
     shape_info(circle)
 
     # Test avec un rectangle
     rectangle = Rectangle(4, 7)
-    print("Information du rectangle :")
+    print("\nRectangle Info:")
     shape_info(rectangle)
