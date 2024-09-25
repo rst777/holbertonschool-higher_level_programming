@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 """
 This module defines the BaseGeometry class.
+
+BaseGeometry serves as a base class for geometric shapes,
+providing an interface for calculating area and validating integers.
 """
 
 
@@ -11,7 +14,7 @@ class BaseGeometry:
         """Calculates the area of the shape.
 
         Raises:
-        Exception: If the area method is not implemented in a subclass.
+            Exception: If the area method is not implemented in a subclass.
         """
         raise Exception("area() is not implemented")
 
