@@ -3,16 +3,20 @@ from abc import ABC, abstractmethod
 import math
 
 # Classe abstraite Shape
+
+
 class Shape(ABC):
     @abstractmethod
     def area(self):
         pass
 
     @abstractmethod
-    def perimeter (self):
+    def perimeter(self):
         pass
 
 # Classe Circle
+
+
 class Circle(Shape):
     def __init__(self, radius):
         self.radius = radius
@@ -23,7 +27,9 @@ class Circle(Shape):
     def perimeter(self):
         return 2 * math.pi * self.radius
 
-#class Rectangle
+# class Rectangle
+
+
 class Rectangle(Shape):
     def __init__(self, width, height):
         self.width = width
@@ -35,19 +41,23 @@ class Rectangle(Shape):
     def perimeter(self):
         return 2 * (self.width + self.height)
 
-#Fonction shape_info
+# Fonction shape_info
+
+
 def shape_info(shape):
     print(f"Area : {shape.area():}")
     print(f"Perimeter : {shape.perimeter():}")
 
-#Test
+# Test
+
+
 if __name__ == "__main__":
-    #Test avec un cercle
+    # Test avec un cercle
     circle = Circle(5)
     print("information du cercle :")
     shape_info(circle)
 
-    #Test avec un rectangle
+    # Test avec un rectangle
     rectangle = Rectangle(4, 7)
     print("Information du rectangle :")
     shape_info(rectangle)
