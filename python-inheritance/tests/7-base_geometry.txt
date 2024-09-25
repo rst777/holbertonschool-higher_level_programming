@@ -61,3 +61,39 @@
    Traceback (most recent call last):
     ...
    ValueError: depth must be greater than 0
+
+# Edge cases
+>>> bg.integer_validator("height", 1)  # Minimum valid value, should not raise an exception
+>>> bg.integer_validator("length", 2**31 - 1)  # Maximum 32-bit integer value, should not raise an exception
+
+# Check area method (should raise exception as it's not implemented)
+>>> bg.area()  # Raises Exception
+Traceback (most recent call last):
+    ...
+Exception: area() is not implemented
+
+# Additional tests for other collection types
+>>> bg.integer_validator("size", {"a": 1})  # Dictionary, Raises TypeError
+Traceback (most recent call last):
+    ...
+TypeError: size must be an integer
+
+>>> bg.integer_validator("length", (1, 2, 3))  # Tuple, Raises TypeError
+Traceback (most recent call last):
+    ...
+TypeError: length must be an integer
+
+>>> bg.integer_validator("set_size", {1, 2, 3})  # Set, Raises TypeError
+Traceback (most recent call last):
+    ...
+TypeError: set_size must be an integer
+
+>>> bg.integer_validator("tuple_value", (4,))  # Single-element tuple, Raises TypeError
+Traceback (most recent call last):
+    ...
+TypeError: tuple_value must be an integer
+
+>>> bg.integer_validator("list_value", [42])  # Single-element list, Raises TypeError
+Traceback (most recent call last):
+    ...
+TypeError: list_value must be an integer
