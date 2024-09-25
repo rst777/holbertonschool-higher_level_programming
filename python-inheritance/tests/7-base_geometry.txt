@@ -1,4 +1,5 @@
-# 7-base_geometry.txt
+7-base_geometry.py
+
 
 This library is very simple, since it only has one function called
  ''integer_validator()''.
@@ -26,4 +27,4 @@ Numbers:
 :: with infinite integer
    >>> bg.integer_validator("infnumber", int('inf'))
    Traceback (most recent call last):
-   ValueError: invalid literal for int() with base 
+   ValueError: invalid literal for int() with base 10: 'inf'
