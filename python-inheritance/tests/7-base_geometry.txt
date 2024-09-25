@@ -1,12 +1,13 @@
-7-base_geometry.py
+>>> import importlib
+>>> BaseGeometry = importlib.import_module('7-base_geometry').BaseGeometry
+>>> bg = BaseGeometry()
 
+# Valid integer values
+>>> bg.integer_validator("width", 5)  # Should not raise an exception
+>>> bg.integer_validator("height", 10)  # Should not raise an exception
+>>> bg.integer_validator("length", 1)  # Minimum valid integer, should not raise an exception
+>>> bg.integer_validator("depth", 1000)  # Large valid integer, should not raise an exception
 
-This library is very simple, since it only has one function called
- ''integer_validator()''.
-
-Numbers:
-========
-''integer_validator()'' returns True if a num is integer.
 #  with positives integers
    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
    >>> bg = BaseGeometry()
