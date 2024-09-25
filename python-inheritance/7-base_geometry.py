@@ -5,6 +5,7 @@
 class BaseGeometry:
     """Classe de base pour les formes géométriques."""
     def area(self):
+        raise Exception("area() n'est pas implémentée")
         """
         Calcule l'aire de la forme géométrique.
 
@@ -26,7 +27,7 @@ class BaseGeometry:
             TypeError: Si la valeur n'est pas un entier.
             ValueError: Si la valeur est inférieure ou égale à 0.
         """
-        if type(value) is not int:
+        if not isinstance(value, int):
             raise TypeError("{} must be integer".format(name))
         if value <= 0:
             raise ValueError("{} must be greater than 0".format(name))
