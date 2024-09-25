@@ -52,12 +52,8 @@ def shape_info(shape):
 
 
 if __name__ == "__main__":
-    # Test avec un cercle
     circle = Circle(5)
-    print("Circle Info :")
-    shape_info(circle)
-
-    # Test avec un rectangle
     rectangle = Rectangle(4, 7)
-    print("\nRectangle Info:")
+
+    shape_info(circle)
     shape_info(rectangle)
