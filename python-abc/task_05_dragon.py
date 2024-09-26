@@ -4,32 +4,37 @@
 This module defines the class SwimMixin
 and FlyMixim
 """
-# Définir le mixin SwimMixin
+#!/usr/bin/env python3
+"""
+This module defines the class SwimMixin
+and FlyMixim
+"""
 
 
 class SwimMixin:
-
+    """A class SwimMixin"""
     pass
 
     def swim(self):
-        print("The creature swims !")
-
-# Définir le mixin FlyMixin
+        """Print a sentence"""
+        print("The creature swims!")
 
 
 class FlyMixin:
-
+    """A class FlyMixin"""
     pass
 
     def fly(self):
-        print("The creature flies !")
-
-# Définir la classe Dragon qui hérite de SwimMixin et FlyMixin
+        """Print a sentence"""
+        print("The creature flies!")
 
 
 class Dragon(SwimMixin, FlyMixin):
-
+    """a class dragon inheretence a FlyMixin class
+    and SwimMixin class
+    """
     pass
 
     def roar(self):
-        print("The dragon roars !")
+        """Print a sentence"""
+        print("The dragon roars!")
