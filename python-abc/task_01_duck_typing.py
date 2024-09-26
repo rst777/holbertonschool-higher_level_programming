@@ -1,8 +1,16 @@
 #!/usr/bin/env python3
+"""
+This module implements an abstract Shape class and its concrete subclasses.
+
+It demonstrates the use of abstract base classes and duck typing in Python.
+The module includes:
+- An abstract Shape class
+- Concrete Circle and Rectangle classes
+- A shape_info function that uses duck typing to print shape information
+"""
+
 from abc import ABC, abstractmethod
 import math
-
-# Classe abstraite Shape
 
 
 class Shape(ABC):
@@ -14,8 +22,6 @@ class Shape(ABC):
     def perimeter(self):
         pass
 
-# Classe Circle
-
 
 class Circle(Shape):
     def __init__(self, radius):
@@ -26,8 +32,6 @@ class Circle(Shape):
 
     def perimeter(self):
         return 2 * math.pi * self.radius
-
-# class Rectangle
 
 
 class Rectangle(Shape):
@@ -41,19 +45,7 @@ class Rectangle(Shape):
     def perimeter(self):
         return 2 * (self.width + self.height)
 
-# Fonction shape_info
-
 
 def shape_info(shape):
-    print("Area: {}".format(shape.area()))
-    print("Perimeter: {}".format(shape.perimeter()))
-
-# Test
-
-
-if __name__ == "__main__":
-    circle = Circle(5)
-    rectangle = Rectangle(4, 7)
-
-    shape_info(circle)
-    shape_info(rectangle)
+    print(f"Area: {shape.area()}")
+    print(f"Perimeter: {shape.perimeter()}")
