@@ -1,7 +1,14 @@
 #!/usr/bin/env python3
 
+"""
+This module defines the class SwimMixin
+and FlyMixim
+"""
 # Définir le mixin SwimMixin
 class SwimMixin:
+
+    pass
+
     def swim(self):
         print("The creature swims !")
 
@@ -9,6 +16,9 @@ class SwimMixin:
 
 
 class FlyMixin:
+
+    pass
+
     def fly(self):
         print("The creature flies !")
 
@@ -16,6 +26,9 @@ class FlyMixin:
 
 
 class Dragon(SwimMixin, FlyMixin):
+
+    pass
+
     def roar(self):
         print("The dragon roars !")
 
