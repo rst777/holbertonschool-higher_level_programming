@@ -5,6 +5,8 @@ This module defines the class SwimMixin
 and FlyMixim
 """
 # Définir le mixin SwimMixin
+
+
 class SwimMixin:
 
     pass
@@ -31,13 +33,3 @@ class Dragon(SwimMixin, FlyMixin):
 
     def roar(self):
         print("The dragon roars !")
-
-# Tester les capacités du dragon
-
-
-draco = Dragon()
-
-# Appeler les méthodes
-draco.swim()  # Affiche "The creature swims!"
-draco.fly()   # Affiche "The creature flies!"
-draco.roar()  # Affiche "The dragon roars!"
