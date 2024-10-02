@@ -14,9 +14,9 @@ def serialize_and_save_to_file(data, filename):
     filename:
         the json file to write in
     """
-    data = {"name": "John Doe", "age": 30, "city": "New York"}
-    with open("filename", "w") as file:
-        json.dump(data, file)
+
+    with open("filename", "w", encoding="utf-8") as f:
+        json.dump(data, f)
 
 
 def load_and_deserialize(filename):
@@ -24,6 +24,6 @@ def load_and_deserialize(filename):
     filename:
         the json file to load from to create Data
     """
-    with open("filename", "r") as file:
-        loaded_data = json.load(file)
-        return loaded_data
+    with open("filename", "r", encoding="utf-8") as f:
+        data = json.load(f)
+        return data
