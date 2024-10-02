@@ -20,11 +20,11 @@ class CustomObject:
     def serialize(self, filename):
         with open(filename, 'wb') as file:
             pickle.dump(self, file)
-        print
+        print()
 
     @classmethod
     def deserialize(cls, filename):
         with open(filename, 'rb') as file:
             obj = pickle.load(file)
-        print
+        print()
         return obj
