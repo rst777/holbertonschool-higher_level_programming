@@ -1,13 +1,10 @@
 #!/usr/bin/python3
 
 
-from flask import Flask, jsonify, abort, request, make_response 
+from flask import Flask, jsonify, abort, request, make_response
 app = Flask(__name__)
 
-users = {
-        "jane": {"name": "Jane", "age": 28, "city": "Los Angeles"},
-        "john": {"username": "john", "name": "John", "age": 30, "city": "New York"}
-}
+users = {}
 
 @app.route("/")
 def home():
