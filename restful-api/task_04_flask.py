@@ -1,13 +1,11 @@
 #!/usr/bin/python3
 
 
-from flask import Flask, jsonify, abort, request, make_response
+from flask import Flask, jsonify, request
+
 app = Flask(__name__)
 
-users = {
-        "jane": {"username": "jane", "name": "Jane", "age": 28, "city": "Los Angeles"},
-        "john": {"username": "john", "name": "John", "age": 30, "city": "New York"}
-}
+users = {}
 
 @app.route("/")
 def home():
@@ -15,11 +13,11 @@ def home():
 
 
 @app.route("/data")
-def get_data():
-    return jsonify(list(users.keys()))
+def json_response():
+    user = list(users.keys())
+    return jsonify(user)
 
 @app.route("/status")
-
 def status():
     return("ok")
 
@@ -27,36 +25,28 @@ def status():
 def get_user(username):
     user = users.get(username)
     if user is None:
-        abort(404, description="User not found")
-    return jsonify(user)
+        return jsonify({"error": "User not found"}), 404
+    else:
+        return jsonify(users[username])
 
 @app.route("/add_user", methods=["POST"])
 def add_user():
-    if not request.json:
-        abort(400, description="Request body must be JSON")
+    new_user = request.get_json()
+    if 'username' not in new_user:
+        return jsonify({"error": "Username is required"}), 400
 
-    new_user = request.json
-    username = new_user.get("username")
-
-    if username in users:
-        abort(400, description="User already exists")
+    username = new_user['username']
 
     users[username]= {
-        "username": username,
+        "username": new_user.get('username'),
         "name": new_user.get("name"),
         "age": new_user.get("age"),
         "city": new_user.get("city")
     }
 
-    return jsonify({"message": "User added successfully", "user": users[username]}), 201
-
-@app.errorhandler(400)
-def bad_request(error):
-    return make_response(jsonify({"error": str(error.description)}), 400)
-
-@app.errorhandler(404)
-def not_found(error):
-    return make_response(jsonify({"error": str(error.description)}), 404)
+    return jsonify({"message": "User added successfully",
+                    "user": users[username]
+                    }), 201
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
