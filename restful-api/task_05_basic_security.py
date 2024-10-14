@@ -42,7 +42,7 @@ def login():
         access_token = create_access_token(identity={"username": username, "role": user['role']})
         return jsonify(access_token=access_token), 200
 
-    return jsonify({"error": "Invalid credentials"}), 401
+    return jsonify({"error" : "Unauthorized"}), 401
 
 # Route protégée par JWT
 @app.route('/jwt-protected', methods=['GET'])
@@ -57,7 +57,7 @@ def jwt_protected():
 def admin_only():
     current_user = get_jwt_identity()
     if current_user['role'] != 'admin':
-        return jsonify({"error": "Admin access required"}), 403
+        return jsonify({"error": "Forbidden"}), 403
     return jsonify({"message": "Admin Access: Granted"}), 200
 
 # Gestion des erreurs JWT
