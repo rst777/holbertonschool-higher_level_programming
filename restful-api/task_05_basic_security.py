@@ -8,7 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 
 # Configuration du secret pour JWT
-app.config['JWT_SECRET_KEY'] = 'your_secret_key'
+app.config['JWT_SECRET_KEY'] = 'your_secret_key'  # Changez ceci en une clé secrète forte pour la production
 jwt = JWTManager(app)
 auth = HTTPBasicAuth()
 
@@ -28,7 +28,7 @@ def verify_password(username, password):
 @app.route('/basic-protected', methods=['GET'])
 @auth.login_required
 def basic_protected():
-    return "Basic Auth: Access Granted", 200
+    return jsonify("Basic Auth: Access Granted"), 200
 
 # Route de connexion pour JWT
 @app.route('/login', methods=['POST'])
@@ -42,7 +42,7 @@ def login():
         access_token = create_access_token(identity={"username": username, "role": user['role']})
         return jsonify(access_token=access_token), 200
 
-    return jsonify({"error" : "Unauthorized"}), 401
+    return jsonify({"error": "Unauthorized"}), 401  # Assurez-vous que cela renvoie 401 pour les erreurs
 
 # Route protégée par JWT
 @app.route('/jwt-protected', methods=['GET'])
@@ -57,7 +57,7 @@ def jwt_protected():
 def admin_only():
     current_user = get_jwt_identity()
     if current_user['role'] != 'admin':
-        return jsonify({"error": "Forbidden"}), 403
+        return jsonify({"error": "Forbidden"}), 403  # Utilisez 403 pour les accès refusés
     return jsonify({"message": "Admin Access: Granted"}), 200
 
 # Gestion des erreurs JWT
@@ -71,7 +71,7 @@ def handle_invalid_token_error(err):
 
 @jwt.expired_token_loader
 def handle_expired_token_error(err):
-    return jsonify({"error": "Token has expired"}), 401
+    return jsonify({"error": "Token has expired"}), 401  # Assurez-vous que cela renvoie 401
 
 @jwt.revoked_token_loader
 def handle_revoked_token_error(err):
