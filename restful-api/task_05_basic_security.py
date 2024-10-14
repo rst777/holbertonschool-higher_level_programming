@@ -28,7 +28,7 @@ def verify_password(username, password):
 @app.route('/basic-protected', methods=['GET'])
 @auth.login_required
 def basic_protected():
-    return "Basic Auth: Access Granted"
+    return "Basic Auth: Access Granted", 200
 
 # Route de connexion pour JWT
 @app.route('/login', methods=['POST'])
@@ -48,7 +48,8 @@ def login():
 @app.route('/jwt-protected', methods=['GET'])
 @jwt_required()
 def jwt_protected():
-    return "JWT Auth: Access Granted"
+    current_user = get_jwt_identity()
+    return jsonify({"message": "JWT Auth: Access Granted", "user": current_user}), 200
 
 # Route protégée par rôle
 @app.route('/admin-only', methods=['GET'])
@@ -57,7 +58,7 @@ def admin_only():
     current_user = get_jwt_identity()
     if current_user['role'] != 'admin':
         return jsonify({"error": "Admin access required"}), 403
-    return "Admin Access: Granted"
+    return jsonify({"message": "Admin Access: Granted"}), 200
 
 # Gestion des erreurs JWT
 @jwt.unauthorized_loader
