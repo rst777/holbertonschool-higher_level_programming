@@ -1,32 +1,42 @@
 #!/usr/bin/python3
+"""
+This script lists all states from the database hbtn_0e_0_usa.
+It takes three arguments: MySQL username, MySQL password, and database name.
+It connects to a MySQL server running on localhost at port 3306
+and retrieves states ordered by states.id in ascending order.
+"""
+
 import MySQLdb
 import sys
 
-if __name__ == "__main__":
-    # Récupération des arguments depuis la ligne de commande
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
+def list_states(username, password, database):
+    """
+    Connects to the MySQL database and retrieves all states ordered by id.
 
-    # Connexion à la base de données MySQL
-    db = MySQLdb.connect(
-        host="localhost",
-        user="root",  # ou 'nouvel_utilisateur' si vous avez créé un nouvel utilisateur
-        password="1207",  # Assurez-vous que c'est correct
-        database="hbtn_0e_0_usa"
-    )
+    Args:
+        username (str): The MySQL username.
+        password (str): The MySQL password.
+        database (str): The name of the database to connect to.
+    """
+    # Connect to the MySQL server
+    db = MySQLdb.connect(host="localhost", user="root", passwd="1207", database="hbtn_0e_0_usa", port=3306)
 
-    # Création d'un curseur pour exécuter des requêtes
+    # Create a cursor object
     cursor = db.cursor()
 
-    # Exécution de la requête pour sélectionner tous les états
+    # Execute the query
     cursor.execute("SELECT * FROM states ORDER BY id ASC")
 
-    # Récupération et affichage des résultats
+    # Fetch all results
     states = cursor.fetchall()
+
+    # Print results
     for state in states:
         print(state)
 
-    # Fermeture du curseur et de la connexion
+    # Close the cursor and the connection
     cursor.close()
     db.close()
+
+if __name__ == "__main__":
+    list_states(sys.argv[1], sys.argv[2], sys.argv[3])
