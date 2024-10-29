@@ -1,28 +1,28 @@
 #!/usr/bin/python3
 """
-This script lists all states with a name starting with 'N'
+Script that lists all states with a name starting with N (upper N)
 from the database hbtn_0e_0_usa.
-It takes three arguments: MySQL username, MySQL password, and database name.
-It connects to a MySQL server running on localhost at port 3306
-and retrieves states ordered by states.id in ascending order.
 """
 
 import MySQLdb
 import sys
 
 
-def list_states_with_n(username, password, database):
+def list_states_N(username, password, database):
     """
-    Connects to the MySQL database and retrieves
-    all states with names starting with 'N'.
+    Lists all states with a name starting with N (upper N)
+    from the specified database.
 
     Args:
-        username (str): The MySQL username.
-        password (str): The MySQL password.
-        database (str): The name of the database to connect to.
+        username (str): MySQL username
+        password (str): MySQL password
+        database (str): Database name
+
+    Returns:
+        None
     """
     try:
-        # Connect to the MySQL server
+        # Connect to MySQL server
         db = MySQLdb.connect(
             host="localhost",
             user=username,
@@ -34,32 +34,34 @@ def list_states_with_n(username, password, database):
         # Create a cursor object
         cursor = db.cursor()
 
-        # Execute the query to get states starting with 'N'
-        query = (
-            "SELECT * FROM states "
-            "WHERE name LIKE 'N%' "
-            "ORDER BY id ASC"
+        # Execute the query
+        cursor.execute(
+            "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC"
         )
-        print("Executing query: ", query)  # Impression pour débogage
-        cursor.execute(query)  # Exécutez la requête
-        states = cursor.fetchall()  # Récupère les résultats
 
-        # Vérifie si des états ont été retournés
-        if not states:
-            print("No states found with names starting with 'N'.")
-        else:
-            # Print results
-            for state in states:
-                print(state)
+        # Fetch all the rows
+        rows = cursor.fetchall()
 
-        # Close the cursor and the connection
-        cursor.close()
-        db.close()
+        # Display the results
+        for row in rows:
+            if row[1][0] == 'N':
+                print(row)
 
-    except MySQLdb.OperationalError as e:
-        print(f"Error connecting to database: {e}")
-        sys.exit(1)
+    except MySQLdb.Error as e:
+        print("MySQL Error:", e)
+
+    finally:
+        # Close cursor and database connection
+        if cursor:
+            cursor.close()
+        if db:
+            db.close()
 
 
 if __name__ == "__main__":
-    list_states_with_n(sys.argv[1], sys.argv[2], sys.argv[3])
+    if len(sys.argv) != 4:
+        print("Usage: {} <username> <password> <database>".format(sys.argv[0]))
+        sys.exit(1)
+
+    username, password, database = sys.argv[1], sys.argv[2], sys.argv[3]
+    list_states_N(username, password, database)
