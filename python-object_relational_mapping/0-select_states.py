@@ -34,9 +34,5 @@ def list_states(username, password, database):
     for state in states:
         print(state)
 
-    # Close the cursor and the connection
-    cursor.close()
-    db.close()
-
 if __name__ == "__main__":
     list_states(sys.argv[1], sys.argv[2], sys.argv[3])
