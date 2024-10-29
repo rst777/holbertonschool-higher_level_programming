@@ -9,6 +9,7 @@ and retrieves states ordered by states.id in ascending order.
 import MySQLdb
 import sys
 
+
 def list_states(username, password, database):
     """
     Connects to the MySQL database and retrieves all states ordered by id.
@@ -20,8 +21,13 @@ def list_states(username, password, database):
     """
     try:
         # Connect to the MySQL server
-        db = MySQLdb.connect(host="localhost", user=username,
-                            passwd=password, db=database, port=3306)
+        db = MySQLdb.connect(
+            host="localhost",
+            user=username,
+            passwd=password,
+            db=database, port=3306
+        )
+
         # Create a cursor object
         cursor = db.cursor()
 
@@ -42,6 +48,7 @@ def list_states(username, password, database):
     except MySQLdb.OperationalError as e:
         print(f"Error connecting to database: {e}")
         sys.exit(1)
+
 
 if __name__ == "__main__":
     list_states(sys.argv[1], sys.argv[2], sys.argv[3])
