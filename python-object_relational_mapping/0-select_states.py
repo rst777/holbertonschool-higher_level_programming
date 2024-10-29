@@ -18,21 +18,30 @@ def list_states(username, password, database):
         password (str): The MySQL password.
         database (str): The name of the database to connect to.
     """
-    # Connect to the MySQL server
-    db = MySQLdb.connect(host="localhost", user="root", passwd="1207", database="hbtn_0e_0_usa", port=3306)
+    try:
+        # Connect to the MySQL server
+        db = MySQLdb.connect(host="localhost", user=username,
+                            passwd=password, db=database, port=3306)
+        # Create a cursor object
+        cursor = db.cursor()
 
-    # Create a cursor object
-    cursor = db.cursor()
+        # Execute the query
+        cursor.execute("SELECT * FROM states ORDER BY id ASC")
 
-    # Execute the query
-    cursor.execute("SELECT * FROM states ORDER BY id ASC")
+        # Fetch all results
+        states = cursor.fetchall()
 
-    # Fetch all results
-    states = cursor.fetchall()
+        # Print results
+        for state in states:
+            print(state)
 
-    # Print results
-    for state in states:
-        print(state)
+        # Close the cursor and the connection
+        cursor.close()
+        db.close()
+
+    except MySQLdb.OperationalError as e:
+        print(f"Error connecting to database: {e}")
+        sys.exit(1)
 
 if __name__ == "__main__":
     list_states(sys.argv[1], sys.argv[2], sys.argv[3])
