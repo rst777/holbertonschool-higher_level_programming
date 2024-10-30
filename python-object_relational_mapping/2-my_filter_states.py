@@ -23,9 +23,6 @@ def search_states(username, password, database, state_name):
         Returns:
             None
     """
-    db = None
-    cursor = None
-
     try:
         # Connect to MySQL server
         db = MySQLdb.connect(
@@ -40,9 +37,8 @@ def search_states(username, password, database, state_name):
         cursor = db.cursor()
 
         # Execute the query
-        query = "SELECT * FROM states WHERE name LIKE '{}' ORDER BY id ASC"\
-                .format(state_name)
-        cursor.execute(query)
+        query = "SELECT * FROM states WHERE name LIKE '{}' ORDER BY id ASC"
+        cursor.execute(query.format(state_name))
 
         # Fetch all the rows
         rows = cursor.fetchall()
@@ -67,5 +63,6 @@ if __name__ == "__main__":
         print("Usage: {} <username> <password> <database> <state>".format(
             sys.argv[0]))
         sys.exit(1)
-    username, password, database, state_name = sys.argv[1:5]
+    username, password, database, state_name = sys.argv[1], sys.argv[2], \
+        sys.argv[3], sys.argv[4]
     search_states(username, password, database, state_name)
