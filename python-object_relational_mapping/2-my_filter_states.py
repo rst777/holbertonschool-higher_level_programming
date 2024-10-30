@@ -40,8 +40,9 @@ def search_states(username, password, database, state_name):
         cursor = db.cursor()
 
         # Execute the query
-        query = "SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC"
-        cursor.execute(query, (state_name,))
+        query = "SELECT * FROM states WHERE name LIKE '{}' ORDER BY id ASC"\
+                .format(state_name)
+        cursor.execute(query)
 
         # Fetch all the rows
         rows = cursor.fetchall()
