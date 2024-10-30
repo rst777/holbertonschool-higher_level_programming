@@ -63,6 +63,5 @@ if __name__ == "__main__":
         print("Usage: {} <username> <password> <database> <state>".format(
             sys.argv[0]))
         sys.exit(1)
-    username, password, database, state_name = sys.argv[1], sys.argv[2], \
-        sys.argv[3], sys.argv[4]
+    username, password, database, state_name = sys.argv[1:]
     search_states(username, password, database, state_name)
