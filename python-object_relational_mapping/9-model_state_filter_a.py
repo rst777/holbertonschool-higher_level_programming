@@ -41,11 +41,8 @@ def list_states_with_a(username, password, database):
         State.name.like('%a%')).order_by(State.id).all()
 
     # Check if any states were found and print the results
-    if not states:
-        print("Nothing")
-    else:
-        for state in states:
-            print(f"{state.id}: {state.name}")
+    for state in states:
+        print(f"{state.id}: {state.name}")
 
     # Close the session
     session.close()
